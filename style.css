@@ -1,0 +1,561 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+/* الهيدر الرئيسي */
+.main-header {
+    background-color: #06050f;
+    color: #fff;
+    padding: 15px 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.header-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.logo h1 {
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.logo span {
+    color: #e50914;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-menu li a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.nav-menu li a:hover, .nav-menu li a.active {
+    color: #fff;
+    border-bottom: 2px solid #e50914;
+    padding-bottom: 5px;
+}
+
+/* شريط الأيام */
+.dates-nav {
+    max-width: 900px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.date-btn {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #555;
+    transition: 0.3s;
+    white-space: nowrap; /* يمنع نزول الكلمة في سطرين نهائياً */
+}
+
+.date-btn:hover {
+    background-color: #f9f9f9;
+}
+
+.date-btn.active {
+    background-color: #e50914;
+    color: #fff;
+    border-color: #e50914;
+}
+
+/* حاوية المباريات والكروت */
+.matches-container {
+    max-width: 900px;
+    margin: 0 auto 30px auto;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* إظهار وإخفاء تبويبات الأيام */
+.tab-content {
+    display: none !important;
+}
+
+.tab-content.active {
+    display: flex !important;
+}
+
+.match-card {
+    position: relative;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid #eee;
+}
+
+.match-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.match-header {
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #444;
+    border-bottom: 1px solid #eee;
+}
+
+.league-logo {
+    width: 28px; 
+    height: 28px;
+    object-fit: contain;
+}
+
+.match-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 35%;
+    gap: 10px;
+}
+
+.team-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.team-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #222;
+}
+
+.match-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    background-color: #1a1a2e;
+    padding: 10px;
+    border-radius: 8px;
+    color: #fff;
+}
+
+.match-time, .match-score {
+    font-size: 22px;
+    font-weight: 900;
+}
+
+.match-status {
+    font-size: 12px;
+    margin-top: 5px;
+    color: #aaa;
+}
+
+.live-text {
+    color: #ff0000;
+    font-weight: bold;
+    animation: blink 1.5s infinite;
+}
+
+.match-footer {
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    font-size: 13px;
+    color: #555;
+    border-top: 1px solid #eee;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* تأثير زر التشغيل عند مرور الماوس */
+.play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+}
+
+.match-card:hover .play-overlay {
+    opacity: 1; 
+}
+
+.play-btn {
+    background-color: rgba(255, 255, 255, 0.95);
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transform: scale(0.5); 
+    transition: transform 0.3s ease;
+}
+
+.play-btn svg {
+    margin-left: 2px;
+}
+
+.match-card:hover .match-time,
+.match-card:hover .match-status {
+    opacity: 0.1;
+    transition: opacity 0.3s ease;
+}
+
+/* أزرار السوشيال ميديا والتوهج */
+.social-header-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  direction: ltr;
+}
+
+.social-circle-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #111111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.social-circle-btn:hover {
+  background-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.social-circle-btn.telegram-btn {
+    border-color: #0088cc !important;
+    color: #0088cc !important;
+    background-color: #ffffff !important;
+    animation: telegramGlowPulse 1.8s infinite ease-in-out !important;
+}
+
+.social-circle-btn.telegram-btn i {
+    color: #0088cc !important;
+}
+
+@keyframes telegramGlowPulse {
+    0% {
+        box-shadow: 0 0 6px #0088cc, 0 0 12px rgba(0, 136, 204, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 18px #0088cc, 0 0 28px rgba(0, 136, 204, 0.8);
+        transform: scale(1.05);
+    }
+    100% {
+        box-shadow: 0 0 6px #0088cc, 0 0 12px rgba(0, 136, 204, 0.4);
+        transform: scale(1);
+    }
+}
+
+/* قسم الجريدة الرياضية */
+.news-newspaper-section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 15px;
+}
+
+.newspaper-header {
+    border-bottom: 3px solid #1a1a2e;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+}
+
+.newspaper-header h2 {
+    font-size: 22px;
+    color: #1a1a2e;
+    font-weight: 900;
+}
+
+.news-article-card {
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    border: 1px solid #e1e1e1;
+    transition: transform 0.3s ease;
+    margin-bottom: 25px;
+}
+
+.news-article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.article-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-bottom: 4px solid #e50914;
+}
+
+.article-content {
+    padding: 25px;
+    position: relative;
+}
+
+.article-badge {
+    position: absolute;
+    top: -20px;
+    right: 25px;
+    background-color: #e50914;
+    color: #fff;
+    padding: 5px 15px;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(229,9,20,0.4);
+}
+
+.article-title {
+    font-size: 20px;
+    color: #111;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    font-weight: 900;
+}
+
+.article-text {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.article-footer {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+    font-size: 13px;
+    color: #888;
+    font-weight: bold;
+}
+
+/* ألوان الوضع الليلي (Dark Mode) */
+body.dark-mode {
+    background-color: #0f172a !important;
+    color: #f8fafc !important;
+}
+
+body.dark-mode .social-circle-btn {
+    background-color: rgba(30, 41, 59, 0.8);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+}
+
+body.dark-mode .social-circle-btn:hover {
+    background-color: #334155;
+}
+
+body.dark-mode .match-card,
+body.dark-mode .news-article-card {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+}
+
+body.dark-mode .match-header,
+body.dark-mode .match-footer {
+    background-color: #0f172a !important;
+    color: #cbd5e1 !important;
+    border-color: #334155 !important;
+}
+
+body.dark-mode .team-name,
+body.dark-mode .article-title {
+    color: #ffffff !important;
+}
+
+body.dark-mode .article-text {
+    color: #94a3b8 !important;
+}
+
+/* التجاوب مع الجوال والتنسيق الأفقي الدقيق */
+@media (max-width: 600px) {
+    .header-container { flex-direction: column; gap: 10px; }
+    .nav-menu { padding: 0; }
+    
+    /* ضبط شريط الأزرار في الجوال ليصبح أفقياً وبخط واحد */
+    .dates-nav {
+        gap: 6px;
+        padding: 0 10px;
+        margin: 15px auto;
+    }
+    .date-btn {
+        padding: 9px 8px;
+        font-size: 13px;
+        flex: 1;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    .match-body { padding: 15px 10px; }
+    .team-logo { width: 40px; height: 40px; }
+    .team-name { font-size: 14px; text-align: center; }
+    .match-time, .match-score { font-size: 18px; }
+    .article-img { height: 200px; }
+    .article-title { font-size: 18px; }
+    .article-text { font-size: 14px; }
+}
+
+/* كرت دوري أبطال أوروبا */
+.ucl-draw-card {
+    background: linear-gradient(135deg, #001440 0%, #000c24 100%);
+    border: 2px solid #0055ff;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 15px 0;
+    color: #ffffff;
+    box-shadow: 0 8px 20px rgba(0, 85, 255, 0.3);
+    text-align: center;
+    direction: rtl;
+    position: relative;
+    overflow: hidden;
+}
+
+.ucl-draw-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0,210,255,0.1) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.ucl-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #00d2ff;
+    font-size: 16px;
+    position: relative;
+    z-index: 2;
+}
+
+.ucl-header .ucl-icon {
+    width: 25px;
+    height: 25px;
+}
+
+.ucl-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+    z-index: 2;
+}
+
+.ucl-image-box img {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    border-radius: 10px;
+    border: 2px solid #00d2ff;
+    box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+    object-fit: cover;
+}
+
+.ucl-info h3 {
+    margin: 10px 0;
+    font-size: 20px;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+.ucl-time-btn {
+    background: linear-gradient(45deg, #0033aa 0%, #0066ff 100%);
+    color: #ffffff;
+    padding: 10px 40px;
+    border-radius: 8px;
+    display: inline-flex;
+    flex-direction: column;
+    font-weight: bold;
+    line-height: 1.3;
+    transition: 0.3s;
+    border: 1px solid #00d2ff;
+}
+
+.ucl-time-btn:hover {
+    background: linear-gradient(45deg, #0044cc 0%, #0088ff 100%);
+    box-shadow: 0 0 15px rgba(0, 136, 255, 0.6);
+    cursor: pointer;
+}
+
+.ucl-time-btn .time {
+    font-size: 18px;
+}
+
+.ucl-time-btn .status {
+    font-size: 12px;
+    opacity: 0.9;
+}
