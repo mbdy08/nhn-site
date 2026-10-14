@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل وموعد مباراة إيفرتون ووولفرهامبتون | كأس رابطة المحترفين الإنجليزية | نحن لايف</title>
+    
+    <link rel="icon" href="https://nhnlive.com/club/photo_2026-08-NHN.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            color: #222;
+            line-height: 1.8;
+        }
+
+        /* الهيدر العلوي */
+        .main-header {
+            background-color: #06050f;
+            color: #fff;
+            padding: 15px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px;
+        }
+
+        .logo a {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            direction: ltr;
+        }
+
+        .logo h1 {
+            font-size: 22px;
+            color: #fff;
+        }
+
+        .logo h1 span {
+            color: #e50914;
+        }
+
+        /* الحاوية الرئيسية للمحتوى */
+        .page-container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* شريط المسار والتعريف في أعلى الصفحة */
+        .breadcrumb-bar {
+            font-size: 13px;
+            color: #777;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .breadcrumb-bar a {
+            color: #e50914;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .breadcrumb-bar a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb-bar span {
+            color: #666;
+        }
+
+        .content-box {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 1px solid #e1e4e8;
+            margin-bottom: 25px;
+        }
+
+        /* عنوان الصفحة الرئيسي */
+        .match-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: #111;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 15px;
+        }
+
+        /* شارات العناوين الجانبية */
+        .section-badge {
+            display: inline-block;
+            background-color: #f0f2f5;
+            color: #333;
+            padding: 6px 16px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 15px;
+            margin: 15px 0 10px 0;
+            border-right: 4px solid #e50914;
+        }
+
+        /* نصوص المقال والوصف */
+        .article-p {
+            font-size: 16px;
+            color: #444;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        /* جدول بطاقة المباراة */
+        .match-info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+
+        .match-info-table tr {
+            border-bottom: 1px solid #eee;
+        }
+
+        .match-info-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .match-info-table tr:nth-child(even) {
+            background-color: #fafbfc;
+        }
+
+        .match-info-table th {
+            padding: 12px 20px;
+            text-align: right;
+            font-size: 15px;
+            color: #111;
+            font-weight: bold;
+            width: 30%;
+        }
+
+        .match-info-table td {
+            padding: 12px 20px;
+            font-size: 15px;
+            color: #444;
+            font-weight: 600;
+        }
+
+        /* صندوق تنبيه موعد المشغل */
+        .player-notice {
+            background-color: #1a1a2e;
+            color: #fff;
+            padding: 16px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 15px;
+            margin: 20px 0;
+        }
+
+        /* حاوية مشغل الفيديو */
+        .player-wrapper {
+            display: none;
+            margin: 20px 0;
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        /* الشريط الرمادي لـ SEO أسفل المحتوى */
+        .site-seo-box {
+            background-color: #e9ecef;
+            color: #495057;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            padding: 14px 20px;
+            border-radius: 8px;
+            margin: 25px auto 15px auto;
+            line-height: 1.6;
+        }
+
+        /* اسم البراند: NHN بالأسود و LIVE بالأحمر بدون خلفيات */
+        .site-brand-name {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 25px;
+            direction: ltr;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-nhn {
+            color: #000000;
+        }
+
+        .brand-live {
+            color: #e50914;
+        }
+
+        /* ================= قسم الفوتر وروابط عن الموقع ================= */
+        .main-footer {
+            background-color: #ffffff;
+            border-top: 1px solid #e1e4e8;
+            padding: 30px 15px 40px 15px;
+            margin-top: 30px;
+        }
+
+        .footer-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-header-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 18px;
+            font-weight: 800;
+            color: #111;
+            margin-bottom: 6px;
+        }
+
+        .footer-header-title .info-icon {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #3b82f6;
+            color: #ffffff;
+            width: 22px;
+            height: 22px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 900;
+            font-family: sans-serif;
+        }
+
+        .footer-red-line {
+            width: 38px;
+            height: 3px;
+            background-color: #b91c1c;
+            border-radius: 2px;
+            margin-bottom: 18px;
+        }
+
+        .footer-links-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links-list li {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .footer-links-list li a {
+            text-decoration: none;
+            color: #334155;
+            font-size: 15px;
+            font-weight: 700;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links-list li a:hover {
+            color: #e50914;
+        }
+
+        /* النقطة الخضراء الاحترافية */
+        .green-bullet {
+            width: 7px;
+            height: 7px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        @media (max-width: 600px) {
+            .match-title { font-size: 18px; }
+            .content-box { padding: 15px; }
+            .match-info-table th, .match-info-table td { padding: 10px; font-size: 13px; }
+            .site-seo-box { font-size: 12px; padding: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر العلوي -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="https://nhnlive.com">
+                    <h1>NHN <span>LIVE</span></h1>
+                    <img src="https://nhnlive.com/club/nhnlive-logo.png" height="35" alt="NHN Logo">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-container">
+
+        <!-- شريط المسار لتعريف المتابع -->
+        <div class="breadcrumb-bar">
+            <a href="https://nhnlive.com">الرئيسية</a>
+            <span>&gt;</span>
+            <a href="https://nhnlive.com/#today-matches">مباريات اليوم</a>
+            <span>&gt;</span>
+            <span>تفاصيل وموعد مباراة إيفرتون ووولفرهامبتون</span>
+        </div>
+        
+        <div class="content-box">
+            <!-- العنوان الرئيسي للمباراة -->
+            <h1 class="match-title">تفاصيل وموعد مباراة إيفرتون ضد وولفرهامبتون في كأس رابطة المحترفين الإنجليزية</h1>
+
+            <!-- تنبيه موعد البث المباشر -->
+            <div class="player-notice" id="streamNotice">
+                ⏱️ يبدأ البث المباشر للشاشة ونقل مجريات اللقاء قبل انطلاق صافرة البداية بنصف ساعة.
+            </div>
+
+            <!-- مكان كود المشغل -->
+            <div class="player-wrapper" id="videoPlayerBox">
+                <!-- يوضع المشغل هنا -->
+            </div>
+
+            <!-- محتوى السيو والكلمات الدلالية للأرشفة -->
+            <div class="section-badge">تفاصيل مباراة إيفرتون ووولفرهامبتون</div>
+            <p class="article-p">
+                يلتقي فريق إيفرتون مع نظيره نادي وولفرهامبتون في مواجهة إقصائية قوية ومرتقبة ضمن منافسات بطولة كأس رابطة المحترفين الإنجليزية (Carabao Cup)، وفقاً لبيانات موقع سوفاسكور الرسمية، في تمام الساعة 09:45 مساءً بتوقيت مكة المكرمة والقاهرة على أرضية ملعب غوديسون بارك التاريخي.
+            </p>
+
+            <div class="section-badge">معلومات اللقاء والقنوات الناقلة</div>
+            <p class="article-p">
+                تُنقل أحداث المواجهة مباشرة وحصرياً عبر شبكة قنوات beIN Sports HD، بتعليق صوتي مميز لتغطية مجريات اللقاء الإقصائي وتحليل كافة جوانبه الفنية. وتكتسب هذه المباراة أهمية بالغة لكلا الفريقين في مسعى كل منهما لمواصلة المشوار والتأهل إلى الأدوار المتقدمة في كأس الرابطة.
+            </p>
+
+            <p class="article-p">
+                يدخل نادي إيفرتون اللقاء متسلحاً بعاملي الأرض والجماهير لفرض سيطرته الهجومية وخطف بطاقة التأهل، بينما يسعى وولفرهامبتون لتقديم أداء تكتيكي صلب واستغلال الهجمات المعاكسة السريعة للعودة ببطاقة العبور.
+            </p>
+
+            <!-- جدول وبطاقة بيانات المباراة -->
+            <div class="section-badge">بطاقة مباراة إيفرتون Vs وولفرهامبتون</div>
+            <table class="match-info-table">
+                <tr>
+                    <th>البطولة</th>
+                    <td>كأس رابطة المحترفين الإنجليزية (Carabao Cup)</td>
+                </tr>
+                <tr>
+                    <th>القناة الناقلة</th>
+                    <td>beIN Sports HD</td>
+                </tr>
+                <tr>
+                    <th>تاريخ المباراة</th>
+                    <td>سبتمبر 2026</td>
+                </tr>
+                <tr>
+                    <th>توقيت المباراة</th>
+                    <td>09:45 مساءً (بتوقيت مكة المكرمة والقاهرة)</td>
+                </tr>
+                <tr>
+                    <th>معلق المباراة</th>
+                    <td>تعليق صوتي عربي</td>
+                </tr>
+                <tr>
+                    <th>نتيجة / حالة المباراة</th>
+                    <td>لم تبدأ بعد</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- الشريط الرمادي لـ SEO الموقع الرسمي -->
+        <div class="site-seo-box">
+            نحن لايف (NHN LIVE) - الموقع الرياضي لمتابعة أهم مباريات اليوم بث مباشر وجدول المواعيد والنتائج. تابع تغطية جميع البطولات الكروية عبر نحن لايف / NHN LIVE بجودة عالية.
+        </div>
+
+        <!-- اسم البراند بالشكل المطلوب (NHN أسود - LIVE أحمر) -->
+        <div class="site-brand-name">
+            <span class="brand-nhn">NHN</span> <span class="brand-live">LIVE</span>
+        </div>
+
+    </div>
+
+    <!-- فوتر الموقع (عن الموقع) بنقاط خضراء وبدون نصوص إخلاء مسؤولية -->
+    <footer class="main-footer">
+        <div class="footer-inner">
+            <div class="footer-section">
+                <div class="footer-header-title">
+                    <span class="info-icon">i</span>
+                    <span>عن الموقع</span>
+                </div>
+                <div class="footer-red-line"></div>
+                <ul class="footer-links-list">
+                    <li>
+                        <span class="green-bullet"></span>
+                        <a href="https://nhnlive.com/about.html">من نحن</a>
+                    </li>
+                    <li>
+                        <span class="green-bullet"></span>
+                        <a href="https://nhnlive.com/contact.html">اتصل بنا</a>
+                    </li>
+                    <li>
+                        <span class="green-bullet"></span>
+                        <a href="https://nhnlive.com/privacy.html">سياسة الخصوصية</a>
+                    </li>
+                    <li>
+                        <span class="green-bullet"></span>
+                        <a href="https://nhnlive.com">الرئيسية</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

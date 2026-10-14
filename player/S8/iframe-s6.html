@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <title>Live Player - S6</title>
+
+    
+
+    
+
+    <!-- 📊 كود تتبع جوجل أناليتكس -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E7E9M7JB1Q"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-E7E9M7JB1Q');
+    </script>
+
+    <!-- 🛡️ حماية ضد الـ Sandbox ومنع تعطيل البث -->
+    <script>
+        try {
+            if (window.document.domain === "") {
+                document.documentElement.innerHTML = "<body style='background:#000; color:#ff3333; display:flex; flex-direction:column; justify-content:center; align-items:center; height:100vh; font-family:Arial;'><h2>⚠️ تم إيقاف البث</h2><p>الموقع المستضيف يمنع ظهور الإعلانات.</p></body>";
+                throw new Error("Sandbox Detected");
+            }
+        } catch (e) {
+            document.documentElement.innerHTML = "<body style='background:#000; color:#ff3333; display:flex; flex-direction:column; justify-content:center; align-items:center; height:100vh; font-family:Arial;'><h2>⚠️ تم إيقاف البث</h2><p>الموقع المستضيف يمنع ظهور الإعلانات.</p></body>";
+            throw new Error("Sandbox Detected");
+        }
+    </script>
+
+    <!-- 🛡️ حماية ضد الكليك يمين وفحص العناصر -->
+    <script>
+        window.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        }, false);
+
+        window.addEventListener('keydown', function(e) {
+            if (e.keyCode === 123 || 
+               (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) || 
+               (e.ctrlKey && e.keyCode === 85)) {
+                e.preventDefault();
+                return false;
+            }
+        }, false);
+    </script>
+
+    <!-- 🟢 مكتبات التشغيل HLS.js و Plyr -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+
+    <style>
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        body, html { 
+            width: 100%; 
+            height: 100%; 
+            background-color: #000; 
+            overflow: hidden; 
+        }
+        
+        .video-wrapper { 
+            position: relative; 
+            width: 100%; 
+            height: 100%; 
+            background-color: #000; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+        }
+
+        .plyr {
+            width: 100% !important; 
+            height: 100% !important; 
+            position: relative !important; 
+        }
+
+        .plyr__video-wrapper {
+            width: 100% !important; 
+            height: 100% !important; 
+            padding-bottom: 0 !important; 
+        }
+
+        video { 
+            width: 100% !important; 
+            height: 100% !important; 
+            outline: none; 
+            object-fit: contain !important; 
+        }
+
+        :root { 
+            --plyr-color-main: #e50914; 
+            --plyr-video-background: #000; 
+        }
+
+        video::-webkit-media-controls-enclosure { 
+            display: none !important; 
+        }
+
+        div.plyr__controls input[data-plyr="seek"], 
+        div.plyr__progress, 
+        div.plyr__time, 
+        .plyr__time--current, 
+        .plyr__time--duration {
+            display: none !important; 
+            visibility: hidden !important; 
+            opacity: 0 !important; 
+            width: 0 !important; 
+            height: 0 !important; 
+            pointer-events: none !important; 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="video-wrapper">
+        <video id="video-player" playsinline webkit-playsinline></video>
+    </div>
+
+    <!-- 📡 تشغيل البث المباشر (HLS.js + Plyr) -->
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const lang = urlParams.get('lang') || 'ar';
+
+        const streams = {
+            ar: "https://nhn-now.b-cdn.net/S6/ar/stream.m3u8",
+            en: "https://nhn-now.b-cdn.net/S6/en/stream.m3u8"
+        };
+
+        const streamUrl = streams[lang] || streams.ar;
+        const videoElement = document.getElementById('video-player');
+        
+        const plyrOptions = { 
+            controls: ['play-large', 'play', 'mute', 'volume', 'settings', 'fullscreen'], 
+            i18n: { quality: 'الجودة' }, 
+            autoplay: false, 
+            muted: false, 
+            ratio: '16:9'
+        };
+        window.player = new Plyr(videoElement, plyrOptions);
+
+        if (Hls.isSupported()) {
+            const hlsConfig = { 
+                enableWorker: true, 
+                lowLatencyMode: false,
+                liveSyncDurationCount: 4,
+                liveMaxLatencyDurationCount: 8,
+                maxBufferLength: 30,
+                maxMaxBufferLength: 60,
+                maxBufferSize: 60 * 1000 * 1000,
+                manifestLoadingTimeOut: 5000,
+                manifestLoadingMaxRetry: 6,
+                manifestLoadingRetryDelay: 500,
+                fragLoadingTimeOut: 8000,
+                fragLoadingMaxRetry: 6,
+                fragLoadingRetryDelay: 500,
+                levelLoadingTimeOut: 5000,
+                levelLoadingMaxRetry: 6,
+                levelLoadingRetryDelay: 500
+            };
+            
+            const hls = new Hls(hlsConfig);
+            hls.loadSource(streamUrl);
+            hls.attachMedia(videoElement);
+
+            hls.on(Hls.Events.ERROR, function (event, data) {
+                if (data.fatal) {
+                    switch (data.type) {
+                        case Hls.ErrorTypes.NETWORK_ERROR:
+                            hls.startLoad();
+                            break;
+                        case Hls.ErrorTypes.MEDIA_ERROR:
+                            hls.recoverMediaError();
+                            break;
+                        default:
+                            hls.destroy();
+                            break;
+                    }
+                }
+            });
+
+        } else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
+            videoElement.src = streamUrl;
+        }
+    </script>
+</body>
+</html>

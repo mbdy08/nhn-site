@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سياسة الخصوصية | نحن لايف - NHN LIVE</title>
+
+    <link rel="icon" href="https://nhnlive.com/club/photo_2026-08-NHN.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            color: #222;
+            line-height: 1.9;
+        }
+
+        /* الهيدر العلوي */
+        .main-header {
+            background-color: #06050f;
+            color: #fff;
+            padding: 15px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px;
+        }
+
+        .logo a {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            direction: ltr;
+        }
+
+        .logo h1 {
+            font-size: 22px;
+            color: #fff;
+        }
+
+        .logo h1 span {
+            color: #e50914;
+        }
+
+        /* الحاوية الرئيسية للمحتوى */
+        .page-container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* شريط المسار */
+        .breadcrumb-bar {
+            font-size: 13px;
+            color: #777;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .breadcrumb-bar a {
+            color: #e50914;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .content-box {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 1px solid #e1e4e8;
+            margin-bottom: 25px;
+        }
+
+        /* عنوان الصفحة */
+        .page-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: #111;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 12px;
+        }
+
+        /* شارات الأقسام */
+        .section-badge {
+            display: inline-block;
+            background-color: #f8fafc;
+            color: #1e293b;
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 16px;
+            margin: 20px 0 15px 0;
+            border-right: 4px solid #e50914;
+            border-top: 1px solid #e2e8f0;
+            border-left: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .article-p {
+            font-size: 16px;
+            color: #444;
+            margin-bottom: 16px;
+            text-align: justify;
+        }
+
+        /* الشريط الرمادي لـ SEO */
+        .site-seo-box {
+            background-color: #e9ecef;
+            color: #495057;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            padding: 14px 20px;
+            border-radius: 8px;
+            margin: 25px auto 15px auto;
+            line-height: 1.6;
+        }
+
+        /* اسم الموقع بألوان البراند الرسمية */
+        .site-brand-name {
+            text-align: center;
+            font-size: 20px;
+            font-weight: 900;
+            color: #06050f;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+        }
+
+        .site-brand-name span {
+            color: #e50914;
+        }
+
+        /* الفوتر السفلي المتناسق مع الموقع */
+        .main-footer {
+            background-color: #ffffff;
+            border-top: 1px solid #e1e4e8;
+            padding: 30px 15px 40px 15px;
+            margin-top: 30px;
+        }
+
+        .footer-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-header-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 18px;
+            font-weight: 800;
+            color: #111;
+            margin-bottom: 6px;
+        }
+
+        .footer-header-title .info-icon {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #3b82f6;
+            color: #ffffff;
+            width: 22px;
+            height: 22px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 900;
+            font-family: sans-serif;
+        }
+
+        .footer-red-line {
+            width: 38px;
+            height: 3px;
+            background-color: #e50914;
+            border-radius: 2px;
+            margin-bottom: 18px;
+        }
+
+        .footer-links-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links-list li {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .footer-links-list li a {
+            text-decoration: none;
+            color: #334155;
+            font-size: 15px;
+            font-weight: 700;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links-list li a:hover {
+            color: #e50914;
+        }
+
+        .green-bullet {
+            width: 7px;
+            height: 7px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        @media (max-width: 600px) {
+            .page-title { font-size: 20px; }
+            .content-box { padding: 18px; }
+            .site-seo-box { font-size: 12px; padding: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر العلوي -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="https://nhnlive.com">
+                    <h1>NHN <span>LIVE</span></h1>
+                    <img src="https://nhnlive.com/club/nhnlive-logo.png" height="35" alt="NHN Logo">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-container">
+
+        <!-- شريط المسار -->
+        <div class="breadcrumb-bar">
+            <a href="https://nhnlive.com">الرئيسية</a>
+            <span>&gt;</span>
+            <span>سياسة الخصوصية</span>
+        </div>
+        
+        <div class="content-box">
+            <h1 class="page-title">سياسة الخصوصية</h1>
+
+            <!-- القسم الأول: الالتزام بالخصوصية -->
+            <div class="section-badge">التزامنا بحماية خصوصيتك</div>
+            <p class="article-p">
+                تعتبر خصوصية زوار منصة <strong>نحن لايف (NHN LIVE)</strong> ذات أولوية قصوى بالنسبة لنا. تهدف هذه الصفحة إلى توضيح طبيعة البيانات التي يتم جمعها أثناء تصفحك للموقع، وكيفية توظيف هذه المعلومات بما يضمن حماية تجربة تصفحك وتقديم خدمة سلسة وآمنة.
+            </p>
+
+            <!-- القسم الثاني: البيانات التقنية المسجلة -->
+            <div class="section-badge">البيانات التقنية التي قد يتم تسجيلها</div>
+            <p class="article-p">
+                مثل معظم المنصات الرقمية، قد تتلقى خوادمنا بيانات تشغيلية تقنية محدودة وغير شخصية، وتتضمن: نوع المتصفح المستخدم، نظام التشغيل، عنوان البروتوكول (IP)، الصفحات التي يتم الانتقال إليها، وتوقيت الزيارة. تُستخدم هذه المؤشرات لأغراض التحليل الإحصائي، وتطوير أداء واستقرار السيرفرات، ولا تُستخدم للتعرف على هويتك الشخصية بأي شكل.
+            </p>
+
+            <!-- القسم الثالث: ملفات تعريف الارتباط (Cookies) -->
+            <div class="section-badge">ملفات تعريف الارتباط (Cookies)</div>
+            <p class="article-p">
+                نستخدم ملفات تعريف الارتباط البسيطة لتخزين تفضيلات التصفح الخاصة بك (مثل تفعيل الوضع الليلي أو إعدادات العرض السابقة) لضمان تجربة مستخدم أكثر سرعة وراحة عند العودة للموقع. بإمكانك دائماً التحكم في هذه الملفات أو تعطيلها كلياً من خلال إعدادات المتصفح الخاص بك دون التأثير على تصفحك العام للمحتوى.
+            </p>
+
+            <!-- القسم الرابع: الشركاء والخدمات الإعلانية -->
+            <div class="section-badge">الخدمات الإعلانية والشركاء</div>
+            <p class="article-p">
+                قد نتعاون مع شبكات إعلانية وشركاء تقنيين خارجيين لعرض إعلانات داخل صفحات الموقع. قد تقوم هذه الشركات باستخدام تقنيات قياس أداء الحملات وملفات الكوكيز لتقديم إعلانات تناسب اهتمامات الزوار، وتخضع تلك الممارسات لسياسات الخصوصية المستقلة والمعتمدة لدى تلك الشبكات الإعلانية الشريكة.
+            </p>
+
+            <!-- القسم الخامس: الروابط والمواقع الخارجية -->
+            <div class="section-badge">الروابط الخارجية</div>
+            <p class="article-p">
+                قد تحتوي جداول المباريات أو الأخبار على روابط تنقلك إلى مصادر ومواقع خارجية. نود التنبيه إلى أن منصة نحن لايف ليست مسؤولة عن المحتوى أو معايير حماية البيانات المعمول بها لدى تلك المواقع الخارجية، ونوصي زوارنا بالاطلاع على سياسات الخصوصية المعتمدة لدى كل منصة يتم الانتقال إليها.
+            </p>
+
+            <!-- القسم السادس: التحديثات -->
+            <div class="section-badge">تحديثات بنود الخصوصية</div>
+            <p class="article-p">
+                نحتفظ بالحق في إجراء مراجعات وتحديثات على هذه السياسة متى ما دعت الحاجة لضمان توافقها مع المعايير الفنية والتشغيلية المعتمدة للموقع. يُنصح بمراجعة هذه الصفحة دورياً لمتابعة أي مستجدات.
+            </p>
+            <p class="article-p" style="font-weight: bold; color: #666; font-size: 14px;">
+                📅 آخر تحديث: 2 سبتمبر 2026
+            </p>
+        </div>
+
+        <!-- الشريط الرمادي لـ SEO -->
+        <div class="site-seo-box">
+            نحن لايف (NHN LIVE) - الموقع الرياضي لمتابعة أهم مباريات اليوم بث مباشر وجدول المواعيد والنتائج. تابع تغطية جميع البطولات الكروية عبر نحن لايف / NHN LIVE بجودة عالية.
+        </div>
+
+        <!-- اسم الموقع بألوان البراند الرسمية -->
+        <div class="site-brand-name">
+            NHN <span>LIVE</span>
+        </div>
+
+    </div>
+
+    <!-- الفوتر مع الروابط الكاملة الشاملة لجميع الصفحات -->
+    <footer class="main-footer">
+        <div class="footer-inner">
+            <div class="footer-section">
+                <div class="footer-header-title">
+                    <span class="info-icon">i</span>
+                    <span>عن الموقع</span>
+                </div>
+                <div class="footer-red-line"></div>
+                <ul class="footer-links-list">
+                    <li>
+                        <span class="green-bullet"></span>
+                        <a href="https://nhnlive.com/about.html">من نحن</a>
+                    </li>
+                    <li>
+                        <span class="green-bullet"></span>
+                        <a href="https://nhnlive.com/contact.html">اتصل بنا</a>
+                    </li>
+                    <li>
+                        <span class="green-bullet"></span>
+                        <a href="https://nhnlive.com/privacy.html">سياسة الخصوصية</a>
+                    </li>
+                    <li>
+                        <span class="green-bullet"></span>
+                        <a href="https://nhnlive.com">الرئيسية</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
