@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>تحميل تطبيق NHN LIVE | بث مباشر للمباريات بدون تقطيع</title>
+    <title>مشغل NHN LIVE | مشغل وسائط وقوائم تشغيل IPTV ذكي</title>
     
     <!-- وسوم الـ SEO والأيقونة -->
     <link rel="icon" href="/photo_2026-08-NHN.ico" type="image/png">
     <link rel="apple-touch-icon" href="/photo_2026-08-NHN.ico">
-    <meta name="description" content="حمّل تطبيق NHN LIVE الرسمي للأندرويد، أو تابعه على هواتف الآيفون والكمبيوتر عبر الويب آب بدون تقطيع.">
+    <meta name="description" content="حمّل مشغل NHN LIVE الرسمي للأندرويد، أو استخدم مشغل الويب المتطور للآيفون والكمبيوتر لتشغيل روابط البث وقوائم IPTV بسهولة وسرعة.">
     
     <!-- خطوط وأيقونات Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -53,8 +53,12 @@
             font-weight: 900;
         }
 
-        .logo span {
-            color: #e50914;
+        .txt-white {
+            color: #ffffff !important;
+        }
+
+        .txt-red {
+            color: #e50914 !important;
         }
 
         .logo img {
@@ -68,7 +72,7 @@
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(255, 255, 255, 0.15);
             color: #fff;
-            padding: 8px 16px;
+            padding: 8px 18px;
             border-radius: 20px;
             text-decoration: none;
             font-size: 14px;
@@ -124,10 +128,6 @@
             color: #ffffff;
         }
 
-        .hero-title span {
-            color: #e50914;
-        }
-
         .hero-subtitle {
             font-size: 15.5px;
             color: #a4b0be;
@@ -135,7 +135,7 @@
             margin: 0 auto 25px auto;
         }
 
-        /* صندوق الإجراءات والتحميل */
+        /* صندوق أزرار التحميل والإجراءات */
         .download-action-box {
             background: #11101b;
             border: 1px solid rgba(229, 9, 20, 0.35);
@@ -145,7 +145,7 @@
             margin-bottom: 40px;
         }
 
-        /* شبكة الأزرار الثلاثة (أندرويد / آيفون / كمبيوتر) */
+        /* شبكة الأزرار الثلاثة */
         .platforms-buttons-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -183,7 +183,7 @@
             font-weight: 600;
         }
 
-        /* 1. زر الأندرويد الأساسي */
+        /* 1. أندرويد */
         .btn-android {
             background: linear-gradient(135deg, #e50914 0%, #b80710 100%);
             border: 1px solid #ff2b37;
@@ -195,7 +195,7 @@
             background: linear-gradient(135deg, #ff1a26 0%, #cc0812 100%);
         }
 
-        /* 2. زر الآيفون */
+        /* 2. آيفون */
         .btn-ios {
             background: linear-gradient(135deg, #1b1e2b 0%, #10121a 100%);
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -207,7 +207,7 @@
             box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
         }
 
-        /* 3. زر الكمبيوتر */
+        /* 3. كمبيوتر */
         .btn-pc {
             background: linear-gradient(135deg, #162030 0%, #0d141e 100%);
             border: 1px solid rgba(41, 182, 246, 0.4);
@@ -219,7 +219,7 @@
             box-shadow: 0 8px 25px rgba(41, 182, 246, 0.35);
         }
 
-        /* صندوق الدومين الرسمي المعتمد */
+        /* الدومين الرسمي الوحيد */
         .official-domain-info {
             display: flex;
             align-items: center;
@@ -257,7 +257,7 @@
             background: rgba(41, 182, 246, 0.2);
         }
 
-        /* شبكة المميزات */
+        /* شبكة مميزات المشغل المعتمدة */
         .features-grid {
             max-width: 900px;
             margin: 0 auto 40px auto;
@@ -270,7 +270,7 @@
         .feature-card {
             background: #11101b;
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
+            border-radius: 18px;
             padding: 25px 20px;
             text-align: center;
             transition: 0.3s;
@@ -303,74 +303,53 @@
         }
 
         .feature-desc {
-            font-size: 14px;
+            font-size: 13.5px;
             color: #a4b0be;
+            line-height: 1.5;
         }
 
-        /* خطوات التثبيت */
-        .steps-section {
-            max-width: 800px;
+        /* صندوق إخلاء المسؤولية القانوني (Legal Disclaimer) */
+        .disclaimer-section {
+            max-width: 850px;
             margin: 0 auto 50px auto;
             padding: 0 15px;
         }
 
-        .steps-box {
+        .disclaimer-box {
             background: #11101b;
             border-radius: 20px;
-            padding: 30px 25px;
+            padding: 24px 22px;
             border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .section-header h2 {
-            font-size: 22px;
-            color: #fff;
-            margin-bottom: 6px;
-        }
-
-        .section-header p {
-            font-size: 14px;
-            color: #747d8c;
-        }
-
-        .step-item {
             display: flex;
             align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 20px;
-            background: rgba(255, 255, 255, 0.03);
-            padding: 15px;
-            border-radius: 12px;
-            border-right: 4px solid #e50914;
+            gap: 16px;
         }
 
-        .step-num {
-            background: #e50914;
-            color: #fff;
-            width: 32px;
-            height: 32px;
+        .disclaimer-icon {
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
+            background: rgba(229, 9, 20, 0.12);
+            color: #e50914;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 900;
+            font-size: 20px;
             flex-shrink: 0;
-            font-size: 15px;
+            border: 1px solid rgba(229, 9, 20, 0.3);
         }
 
-        .step-text h4 {
+        .disclaimer-text h4 {
             font-size: 16px;
-            color: #fff;
-            margin-bottom: 4px;
+            color: #ffffff;
+            font-weight: 800;
+            margin-bottom: 6px;
         }
 
-        .step-text p {
+        .disclaimer-text p {
             font-size: 13px;
-            color: #a4b0be;
+            color: #8E95A5;
+            line-height: 1.6;
         }
 
         /* الفوتر */
@@ -378,7 +357,7 @@
             text-align: center;
             padding: 25px 15px;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
-            font-size: 14px;
+            font-size: 13.5px;
             color: #747d8c;
         }
 
@@ -393,7 +372,7 @@
             .hero-title { font-size: 22px; }
             .hero-subtitle { font-size: 14px; }
             .platforms-buttons-grid {
-                grid-template-columns: 1fr; /* ترتيب الأزرار رأسياً بشكل مريح للإبهام على الهاتف */
+                grid-template-columns: 1fr;
                 gap: 12px;
             }
             .platform-btn {
@@ -403,6 +382,7 @@
                 padding: 14px 20px;
             }
             .features-grid { grid-template-columns: 1fr; }
+            .disclaimer-box { flex-direction: column; align-items: center; text-align: center; }
         }
     </style>
 </head>
@@ -411,12 +391,12 @@
     <!-- الهيدر العلوي -->
     <header class="header">
         <a href="https://nhnlive-now.com" class="logo">
-            <h1>NHN <span>LIVE</span></h1>
+            <h1><span class="txt-white">NHN</span> <span class="txt-red">LIVE</span></h1>
             <img src="/photo_2026-08-NHN.ico" alt="NHN Logo" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/mbdy08/matches/main/ic_logo.png';">
         </a>
         <a href="https://nhnlive-now.com" class="back-home-btn">
             <i class="fa-solid fa-play"></i>
-            مشاهدة البث (Web)
+            فتح المشغل (Web)
         </a>
     </header>
 
@@ -424,18 +404,20 @@
     <section class="hero-section">
         
         <div class="app-icon-wrapper">
-            <img src="/photo_2026-08-NHN.ico" alt="NHN LIVE App" class="app-icon" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/mbdy08/matches/main/ic_logo.png';">
+            <img src="/photo_2026-08-NHN.ico" alt="NHN LIVE Player" class="app-icon" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/mbdy08/matches/main/ic_logo.png';">
         </div>
 
-        <h1 class="hero-title">منصة وتطبيق <span>NHN LIVE</span> الرسمي</h1>
+        <!-- العنوان المطلوب: NHN بالأبيض و LIVE بالأحمر -->
+        <h1 class="hero-title">
+            مشغل <span class="txt-white">NHN</span> <span class="txt-red">LIVE</span> الرسمي
+        </h1>
         <p class="hero-subtitle">
-            تابع كافة المباريات والدوريات العالمية والمحلية بث مباشر بأعلى جودة وثبات، متوفر لجميع الأجهزة الذكية بدون تقطيع.
+            مشغل وسائط وIPTV احترافي فائق الخفة والسرعة لتشغيل روابط البث المباشر وقوائم التشغيل على جميع أجهزتك الذكية بكل سهولة وأمان.
         </p>
 
         <!-- صندوق أزرار التحميل والدومين الرسمي -->
         <div class="download-action-box">
             
-            <!-- الأزرار الثلاثة المطلوبة (أندرويد / آيفون / كمبيوتر) -->
             <div class="platforms-buttons-grid">
                 
                 <!-- 1. زر الأندرويد -->
@@ -443,7 +425,7 @@
                     <i class="fa-brands fa-android"></i>
                     <div>
                         <div class="btn-title">تحميل للأندرويد</div>
-                        <div class="btn-subtitle">ملف مباشر (APK)</div>
+                        <div class="btn-subtitle">تطبيق APK مباشر</div>
                     </div>
                 </a>
 
@@ -452,7 +434,7 @@
                     <i class="fa-brands fa-apple"></i>
                     <div>
                         <div class="btn-title">تشغيل للآيفون</div>
-                        <div class="btn-subtitle">تطبيق ويب (iOS Web App)</div>
+                        <div class="btn-subtitle">مشغل ويب (iOS Web)</div>
                     </div>
                 </a>
 
@@ -478,80 +460,61 @@
 
     </section>
 
-    <!-- مميزات المنصة -->
+    <!-- مميزات المشغل المعتمدة -->
     <section class="features-grid">
         
         <div class="feature-card">
             <div class="feature-icon-box">
-                <i class="fa-solid fa-bolt"></i>
+                <i class="fa-solid fa-play"></i>
             </div>
-            <h3 class="feature-title">سرعة فائقة</h3>
-            <p class="feature-desc">فتح فوري للبث بدون إعلانات مزعجة وبدون أي انتظار أو تعليق أثناء المشاهدة.</p>
+            <h3 class="feature-title">دعم الصيغ المباشرة</h3>
+            <p class="feature-desc">تشغيل فوري وسلس لبروتوكولات وبث HLS و M3U8 و MP4 و TS بأعلى جودة ممكنة.</p>
         </div>
 
         <div class="feature-card">
             <div class="feature-icon-box">
                 <i class="fa-solid fa-server"></i>
             </div>
-            <h3 class="feature-title">سيرفرات فائقة الثبات</h3>
-            <p class="feature-desc">تقنيات بث HLS متطورة عبر سيرفرات تضمن استمرار البث حتى في أوقات الذروة والمباريات الكبرى.</p>
+            <h3 class="feature-title">دعم بروتوكولات IPTV</h3>
+            <p class="feature-desc">إمكانية إضافة وتشغيل اشتراكاتك الخاصة بسهولة عبر قوائم M3U وحسابات Xtream Codes.</p>
         </div>
 
         <div class="feature-card">
             <div class="feature-icon-box">
-                <i class="fa-solid fa-sliders"></i>
+                <i class="fa-solid fa-bolt"></i>
             </div>
-            <h3 class="feature-title">جودات متعددة (HD / SD / 4K)</h3>
-            <p class="feature-desc">إمكانية اختيار جودة البث يدوياً لتناسب باقتك وسرعة اتصال الإنترنت لديك بكل سلاسة.</p>
+            <h3 class="feature-title">أداء فائق وخفيف</h3>
+            <p class="feature-desc">بنية تشغيل متقدمة تضمن استقرار البث مع توفير تام في استهلاك البطارية والذاكرة.</p>
         </div>
 
         <div class="feature-card">
             <div class="feature-icon-box">
-                <i class="fa-solid fa-mobile-screen-button"></i>
+                <i class="fa-solid fa-shield-halved"></i>
             </div>
-            <h3 class="feature-title">متوافق مع كل الأجهزة</h3>
-            <p class="feature-desc">يعمل بكفاءة على جميع الهواتف (أندرويد وآيفون) وأجهزة الكمبيوتر والشاشات الذكية.</p>
+            <h3 class="feature-title">أمان وخصوصية تامة</h3>
+            <p class="feature-desc">لا يتطلب المشغل أي تسجيل أو إنشاء حساب ولا يجمع أي بيانات شخصية للمستخدمين.</p>
         </div>
 
     </section>
 
-    <!-- خطوات التثبيت البسيطة لهواتف الأندرويد -->
-    <section class="steps-section">
-        <div class="steps-box">
-            <div class="section-header">
-                <h2>📱 طريقة التثبيت في 3 خطوات بسيطة</h2>
-                <p>تطبيق الأندرويد بصيغة APK مباشر لخفة وسرعة الأداء، اتبع الخطوات التالية لتثبيته:</p>
+    <!-- صندوق إخلاء المسؤولية القانوني المحكم -->
+    <section class="disclaimer-section">
+        <div class="disclaimer-box">
+            <div class="disclaimer-icon">
+                <i class="fa-solid fa-scale-balanced"></i>
             </div>
-
-            <div class="step-item">
-                <div class="step-num">1</div>
-                <div class="step-text">
-                    <h4>تحميل الملف</h4>
-                    <p>اضغط على زر <b>تحميل للأندرويد</b> بالأعلى وانتظر اكتمال تنزيل ملف الـ APK على هاتفك.</p>
-                </div>
-            </div>
-
-            <div class="step-item">
-                <div class="step-num">2</div>
-                <div class="step-text">
-                    <h4>الموافقة على التثبيت</h4>
-                    <p>افتح الملف الذي قمت بتحميله؛ وإذا ظهرت لك رسالة "تثبيت تطبيقات غير معروفة"، اضغط على <b>الإعدادات</b> وفعّل خيار <b>السماح من هذا المصدر</b>.</p>
-                </div>
-            </div>
-
-            <div class="step-item">
-                <div class="step-num">3</div>
-                <div class="step-text">
-                    <h4>استمتع بالمشاهدة</h4>
-                    <p>اضغط على زر <b>تثبيت</b> ثم افتح التطبيق واستمتع بمباريات اليوم بأعلى دقة وبثبات تام مجاناً!</p>
-                </div>
+            <div class="disclaimer-text">
+                <h4>إخلاء مسؤولية قانوني (Disclaimer)</h4>
+                <p>
+                    يعمل تطبيق ومشغل <b>NHN LIVE</b> كواجهة وأداة مشغل وسائط ذكي (Smart Media Player) فقط، ولا يستضيف ولا يبث ولا يسجل ولا يعيد توزيع أي قنوات تلفزيونية أو وسائط أو بثوث محمية بحقوق الطبع والنشر على خوادمه الخاصة. جميع المحتويات والروابط التي يتم تشغيلها تعود ملكيتها الفكرية لمالكيها ومصادرها الأصلية.
+                </p>
             </div>
         </div>
     </section>
 
     <!-- الفوتر -->
     <footer class="footer">
-        <p>جميع الحقوق محفوظة لشبكة <a href="https://nhnlive-now.com">NHN LIVE</a> &copy; 2026</p>
+        <p>جميع الحقوق محفوظة لمشغل <a href="https://nhnlive-now.com"><span class="txt-white">NHN</span> <span class="txt-red">LIVE</span></a> &copy; 2026</p>
     </footer>
 
 </body>
