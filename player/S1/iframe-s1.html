@@ -2,12 +2,12 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="robots" content="noindex, nofollow">
     <meta name="referrer" content="no-referrer-when-downgrade" />
     <title>Live Player - S1</title>
 
-    <!-- 📊 كود تتبع جوجل أناليتكس داخل المشغل لحساب نقرات الإعلان أينما عُرض -->
+    <!-- 📊 كود تتبع جوجل أناليتكس -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-E7E9M7JB1Q"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -16,25 +16,9 @@
       gtag('config', 'G-E7E9M7JB1Q');
     </script>
 
-    <!-- 🛡️ حماية ضد الـ Sandbox وإيقاف البث إذا تم حظر الإعلانات -->
-    <script>
-        try {
-            if (window.document.domain === "") {
-                document.documentElement.innerHTML = "<body style='background:#000; color:#ff3333; display:flex; flex-direction:column; justify-content:center; align-items:center; height:100vh; font-family:Arial;'><h2>⚠️ تم إيقاف البث</h2><p>الموقع المستضيف يمنع ظهور الإعلانات.</p></body>";
-                throw new Error("Sandbox Detected");
-            }
-        } catch (e) {
-            document.documentElement.innerHTML = "<body style='background:#000; color:#ff3333; display:flex; flex-direction:column; justify-content:center; align-items:center; height:100vh; font-family:Arial;'><h2>⚠️ تم إيقاف البث</h2><p>الموقع المستضيف يمنع ظهور الإعلانات.</p></body>";
-            throw new Error("Sandbox Detected");
-        }
-    </script>
-
     <!-- 🛡️ حماية ضد الكليك يمين واختصارات لوحة المفاتيح -->
     <script>
-        window.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-        }, false);
-
+        window.addEventListener('contextmenu', function(e) { e.preventDefault(); }, false);
         window.addEventListener('keydown', function(e) {
             if (e.keyCode === 123 || 
                (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) || 
@@ -122,137 +106,81 @@
 <body>
 
     <div class="video-wrapper">
-        <video id="video-player" playsinline webkit-playsinline></video>
+        <video id="video-player" playsinline webkit-playsinline x5-playsinline preload="auto"></video>
     </div>
 
-    <!-- 📡 مشغل البث (HLS.js + Plyr) بنفس التصميم الأصلي -->
     <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const lang = urlParams.get('lang') || 'ar';
-
-        // 🟢 روابط البث المباشر الخاصة بك
-        const streams = {
-            ar: "https://ouou2.b-cdn.net/live/ch10_hd/index.m3u8",
-            en: "https://ouou2.b-cdn.net/live/ch10_hd/index.m3u8"
-        };
-
-        const streamUrl = streams[lang] || streams.ar;
+        // رابط القناة النشطة على CDN المفتوح
+        const streamUrl = "https://ouou1.b-cdn.net/live/ch10_hd/index.m3u8";
         const videoElement = document.getElementById('video-player');
 
-        let hlsInstance = null;
-
-        // بناء المشغل مع تعطيل تخزين حالة الكتم السابقة لضمان عمل الصوت دائماً
+        // إعداد المشغل بألوانك الأصلية ودون عناصر تسبب تجميد الواجهة
         const player = new Plyr(videoElement, {
-            controls: ['play-large', 'play', 'mute', 'volume', 'settings', 'fullscreen'],
-            settings: ['quality'],
-            storage: { enabled: false },
-            quality: {
-                default: 0,
-                options: [720, 480, 0],
-                forced: true,
-                onChange: (newQuality) => {
-                    if (!hlsInstance) return;
-                    if (newQuality === 0) {
-                        hlsInstance.currentLevel = -1;
-                    } else {
-                        hlsInstance.levels.forEach((level, index) => {
-                            if (level.height === newQuality) {
-                                hlsInstance.currentLevel = index;
-                            }
-                        });
-                    }
-                }
-            },
-            i18n: {
-                quality: 'الجودة',
-                qualityLabel: {
-                    0: 'تلقائي (Auto)',
-                    720: '720p 60Hz',
-                    480: '480p 30Hz'
-                }
-            },
+            controls: ['play-large', 'play', 'mute', 'volume', 'fullscreen'],
             autoplay: false,
             muted: false,
-            volume: 1,
+            clickToPlay: true,
             ratio: '16:9'
         });
 
-        window.player = player;
+        function playStreamSafely() {
+            const playPromise = videoElement.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(function() {
+                    // إذا منع المتصفح أو الآيفون الصوت التلقائي، يعمل في وضع الصامت أولاً
+                    videoElement.muted = true;
+                    videoElement.play();
+                });
+            }
+        }
 
+        // المسار الأول: متصفحات تدعم Hls.js (الكمبيوتر وأندرويد)
         if (Hls.isSupported()) {
-            hlsInstance = new Hls({
+            const hls = new Hls({
                 enableWorker: true,
                 lowLatencyMode: false,
-                backBufferLength: 30,
-                maxBufferLength: 30,
-                maxMaxBufferLength: 60,
-                maxBufferHole: 0.5,
-                nudgeOffset: 0.2,
-                nudgeMaxRetry: 5,
-                manifestLoadingMaxRetry: 10,
-                manifestLoadingRetryDelay: 1000,
-                levelLoadingMaxRetry: 10,
-                levelLoadingRetryDelay: 1000,
-                fragLoadingMaxRetry: 10,
-                fragLoadingRetryDelay: 1000
+                liveSyncDurationCount: 3,
+                liveMaxLatencyDurationCount: 5,
+                manifestLoadingMaxRetry: 6,
+                levelLoadingMaxRetry: 6
             });
 
-            hlsInstance.loadSource(streamUrl);
-            hlsInstance.attachMedia(videoElement);
+            hls.loadSource(streamUrl);
+            hls.attachMedia(videoElement);
 
-            // مزامنة اللحظة الحية للبث فور ضغط المشاهد على زر التشغيل
-            player.on('play', function () {
-                if (hlsInstance && hlsInstance.liveSyncPosition) {
-                    const latency = hlsInstance.liveSyncPosition - videoElement.currentTime;
-                    if (latency > 25) {
-                        videoElement.currentTime = hlsInstance.liveSyncPosition;
-                    }
-                }
+            hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                console.log("تم تحميل المانيفست بنجاح.");
             });
 
-            hlsInstance.on(Hls.Events.LEVEL_SWITCHED, function (event, data) {
-                if (hlsInstance.autoLevelEnabled) {
-                    const currentLevel = hlsInstance.levels[data.level];
-                    if (currentLevel) {
-                        const qualityBadge = document.querySelector('.plyr__menu__container [data-plyr="quality"] span');
-                        if (qualityBadge) {
-                            qualityBadge.innerText = 'تلقائي (' + currentLevel.height + 'p)';
-                        }
-                    }
-                }
-            });
-
-            hlsInstance.on(Hls.Events.ERROR, function (event, data) {
+            hls.on(Hls.Events.ERROR, function (event, data) {
                 if (data.fatal) {
                     switch (data.type) {
                         case Hls.ErrorTypes.NETWORK_ERROR:
-                            hlsInstance.startLoad();
+                            hls.startLoad();
                             break;
                         case Hls.ErrorTypes.MEDIA_ERROR:
-                            hlsInstance.recoverMediaError();
+                            hls.recoverMediaError();
                             break;
                         default:
-                            hlsInstance.destroy();
+                            hls.destroy();
                             break;
                     }
                 }
             });
 
+        // المسار الثاني: أجهزة الآيفون ومتصفح Safari (دعم Native HLS المباشر)
         } else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
             videoElement.src = streamUrl;
+            videoElement.addEventListener('loadedmetadata', function() {
+                console.log("تم تجهيز البث على مشغل الآيفون الأصلي.");
+            });
         }
+
+        // تشغيل مباشر بمجرد نقر المشاهد على الواجهة
+        player.on('play', function() {
+            playStreamSafely();
+        });
     </script>
-
-    <!-- ========================================== -->
-    <!-- 💥 ضع كود الـ POPUNDER هنا في هذا المكان 💥 -->
-    <!-- انسخ كود شركة الإعلانات وضعه تحت هذا السطر مباشرة -->
-
-
-    
-
-
-
-    <!-- ========================================== -->
 
 </body>
 </html>
