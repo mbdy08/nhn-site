@@ -16,7 +16,7 @@
       gtag('config', 'G-E7E9M7JB1Q');
     </script>
 
-    <!-- 🛡️ حماية ضد الكليك يمين واختصارات المطورين -->
+    <!-- 🛡️ حماية ضد الكليك يمين واختصارات لوحة المفاتيح -->
     <script>
         window.addEventListener('contextmenu', function(e) { e.preventDefault(); }, false);
         window.addEventListener('keydown', function(e) {
@@ -84,7 +84,7 @@
             --plyr-video-background: #000; 
         }
 
-        /* إخفاء شريط التقديم والوقت لتناسب البث المباشر */
+        /* إخفاء أشرطة الوقت ليتناسب مع البث المباشر */
         div.plyr__controls input[data-plyr="seek"], 
         div.plyr__progress, 
         div.plyr__time, 
@@ -105,47 +105,41 @@
         <video id="video-player" playsinline webkit-playsinline></video>
     </div>
 
-    <!-- 📡 مشغل البث (HLS.js + Plyr المحدث والمحصن) -->
     <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        
-        // جلب القناة من الرابط ديناميكياً أو اعتماد ch1_hd كافتراضي
-        const channel = urlParams.get('ch') || 'ch1_hd';
-        
-        // استخدام سيرفر uouo2 المخصص للموقع مع تجاوز الكاش
-        const streamUrl = `https://uouo2.b-cdn.net/live/${channel}/index.m3u8`;
+        // ========================================================
+        // 💥 ضع رابط البث المباشر هنا مباشرة كما كنت تفعل 💥
+        // مثال: "https://uouo2.b-cdn.net/live/ch10_hd/index.m3u8"
+        // ========================================================
+        const streamUrl = "https://uouo2.b-cdn.net/live/ch10_hd/index.m3u8";
+
         const videoElement = document.getElementById('video-player');
-
         let hlsInstance = null;
-        let plyrInstance = null;
 
-        function initPlayer() {
-            plyrInstance = new Plyr(videoElement, {
-                controls: ['play-large', 'play', 'mute', 'volume', 'fullscreen'],
-                autoplay: true,
-                muted: false,
-                ratio: '16:9'
-            });
-            window.player = plyrInstance;
-        }
+        // تهيئة مشغل Plyr بشكل سليم دون إجبار جودات وهمية تسبب تعليق الشاشة
+        const player = new Plyr(videoElement, {
+            controls: ['play-large', 'play', 'mute', 'volume', 'fullscreen'],
+            autoplay: true,
+            muted: false,
+            ratio: '16:9'
+        });
+        window.player = player;
 
         if (Hls.isSupported()) {
             hlsInstance = new Hls({
                 enableWorker: true,
-                lowLatencyMode: false,
-                liveSyncDurationCount: 3,
+                lowLatencyMode: false,          // إيقاف الوضع فائق السرعة لمنع إعادة اللقطات
+                liveSyncDurationCount: 3,       // تخزين 3 مقاطع للأمام لمنع التقطيع
                 liveMaxLatencyDurationCount: 5,
-                manifestLoadingMaxRetry: 5,
-                levelLoadingMaxRetry: 5
+                manifestLoadingMaxRetry: 6,
+                levelLoadingMaxRetry: 6
             });
 
             hlsInstance.loadSource(streamUrl);
             hlsInstance.attachMedia(videoElement);
 
             hlsInstance.on(Hls.Events.MANIFEST_PARSED, function () {
-                initPlayer();
                 videoElement.play().catch(function() {
-                    // في حال حظر المتصفح الصوت التلقائي، يعمل المشغل صامتاً مع إمكانية إلغاء الكتم بضغطة زر
+                    // إذا منع المتصفح تشغيل الصوت تلقائياً، يبدأ صامتاً ليعمل البث فوراً
                     videoElement.muted = true;
                     videoElement.play();
                 });
@@ -155,11 +149,9 @@
                 if (data.fatal) {
                     switch (data.type) {
                         case Hls.ErrorTypes.NETWORK_ERROR:
-                            console.log("جاري استعادة الاتصال بالبث...");
                             hlsInstance.startLoad();
                             break;
                         case Hls.ErrorTypes.MEDIA_ERROR:
-                            console.log("استعادة أخطاء التوافق الزمني...");
                             hlsInstance.recoverMediaError();
                             break;
                         default:
@@ -170,9 +162,7 @@
             });
 
         } else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
-            // دعم متصفحات آبل (Safari / iOS)
             videoElement.src = streamUrl;
-            initPlayer();
         }
     </script>
 
